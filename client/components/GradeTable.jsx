@@ -15,8 +15,8 @@ class GradeTable extends React.Component {
 
   render() {
     return (
-      <table className="table">
-        <thead>
+      <table className="table table-striped table-bordered table-hover ">
+        <thead className="thead-dark">
           <tr>
             <th >Student Name</th>
             <th >Course</th>
