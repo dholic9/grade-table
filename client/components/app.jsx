@@ -26,14 +26,14 @@ class App extends React.Component {
     this.state.grades.map(user => {
       sum += user.grade;
     });
-    this.average = Math.round(sum / this.state.grades.length);
+    return Math.round(sum / this.state.grades.length);
   }
 
   render() {
-    this.getAverageGrade();
+
     return (
       <div className="container">
-        <PageTitle avg={this.average}text="Student Grade Table" />
+        <PageTitle avg={this.getAverageGrade()} text="Student Grade Table" />
         <div className="row">
           <div className="col-sm">
             <GradeTable grades={this.state.grades} />
