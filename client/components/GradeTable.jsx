@@ -4,6 +4,7 @@ import Grade from './Grade';
 class GradeTable extends React.Component {
 
   createStudent() {
+
     if (this.props.grades.length > 0) {
       return this.props.grades.map(student => {
         return (
@@ -15,19 +16,21 @@ class GradeTable extends React.Component {
 
   render() {
     return (
-      <table className="table table-striped table-bordered table-hover ">
-        <thead className="thead-dark">
-          <tr>
-            <th >Student Name</th>
-            <th >Course</th>
-            <th >Grade</th>
-            <th>Operations</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.createStudent()}
-        </tbody>
-      </table>
+      <div className="container col-sm">
+        <table className="table table-striped table-bordered table-hover ">
+          <thead className="thead-dark">
+            <tr>
+              <th >Student Name</th>
+              <th >Course</th>
+              <th >Grade</th>
+              <th>Operations</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.createStudent()}
+          </tbody>
+        </table>
+      </div>
     );
   }
 
