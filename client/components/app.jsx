@@ -25,11 +25,15 @@ class App extends React.Component {
   }
 
   getAverageGrade() {
-    let sum = 0;
-    this.state.grades.map(user => {
-      sum += parseInt(user.grade);
-    });
-    return Math.round(sum / parseInt(this.state.grades.length));
+    if (this.state.grades.length > 0) {
+      let sum = 0;
+      this.state.grades.map(user => {
+        sum += parseInt(user.grade);
+      });
+      return Math.round(sum / parseInt(this.state.grades.length));
+    } else {
+      return 'N/A';
+    }
   }
 
   addStudent(newStudent) {
@@ -53,7 +57,6 @@ class App extends React.Component {
     const tempArr = [...this.state.grades];
     for (let i = 0; i < tempArr.length; i++) {
       if (tempArr[i].id === id) {
-        console.log(i);
         tempArr.splice(i, 1);
       }
     }

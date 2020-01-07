@@ -17,6 +17,12 @@ class GradeTable extends React.Component {
           />
         );
       });
+    } else {
+      return (
+        <tr scope="row">
+          <td>No grades recorded</td>
+        </tr>
+      );
     }
   }
 
