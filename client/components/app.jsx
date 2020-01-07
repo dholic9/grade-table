@@ -10,6 +10,7 @@ class App extends React.Component {
       grades: []
     };
     this.addStudent = this.addStudent.bind(this);
+    this.deleteStudent = this.deleteStudent.bind(this);
   }
 
   componentDidMount() {
@@ -24,11 +25,15 @@ class App extends React.Component {
   }
 
   getAverageGrade() {
-    let sum = 0;
-    this.state.grades.map(user => {
-      sum += parseInt(user.grade);
-    });
-    return Math.round(sum / parseInt(this.state.grades.length));
+    if (this.state.grades.length > 0) {
+      let sum = 0;
+      this.state.grades.map(user => {
+        sum += parseInt(user.grade);
+      });
+      return Math.round(sum / parseInt(this.state.grades.length));
+    } else {
+      return 'N/A';
+    }
   }
 
   addStudent(newStudent) {
@@ -48,15 +53,32 @@ class App extends React.Component {
       });
   }
 
+  deleteStudent(id) {
+    const tempArr = [...this.state.grades];
+    for (let i = 0; i < tempArr.length; i++) {
+      if (tempArr[i].id === id) {
+        tempArr.splice(i, 1);
+      }
+    }
+
+    fetch('/api/grades/' + id, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ grades: tempArr });
+      });
+  }
+
   render() {
     return (
       <div className="container-fluid">
         <div className="row">
           <PageTitle avg={this.getAverageGrade()} text="Student Grade Table" />
           <div className="col-8">
-            <GradeTable grades={this.state.grades} />
+            <GradeTable grades={this.state.grades} onSubmit={this.deleteStudent}/>
           </div>
-          <div className="col-2">
+          <div className="col-4">
             <GradeForm onSubmit={this.addStudent} />
           </div>
         </div>
