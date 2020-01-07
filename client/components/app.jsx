@@ -26,9 +26,9 @@ class App extends React.Component {
   getAverageGrade() {
     let sum = 0;
     this.state.grades.map(user => {
-      sum += user.grade;
+      sum += parseInt(user.grade);
     });
-    return Math.round(sum / this.state.grades.length);
+    return Math.round(sum / parseInt(this.state.grades.length));
   }
 
   addStudent(newStudent) {
