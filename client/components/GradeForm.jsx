@@ -52,7 +52,7 @@ class GradeForm extends React.Component {
     const courseValue = this.state.course;
     const gradeValue = this.state.grade;
     return (
-      <form className="input-group mb-4 " onSubmit={this.handleSubmit}>
+      <form className="input-group mb-4 flex-column float-sm-left float-md-right" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <input required autoFocus value={nameValue} onChange={this.handleNameChange} type="text" className="form-control" placeholder="Name"/>
         </div>

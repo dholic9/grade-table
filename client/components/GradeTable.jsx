@@ -28,7 +28,7 @@ class GradeTable extends React.Component {
 
   render() {
     return (
-      <div className="container col-sm">
+      <div className="container col-sm-12 float-none">
         <table className="table table-striped table-bordered table-hover ">
           <thead className="thead-dark">
             <tr>
