@@ -72,13 +72,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid  justify-content-center align-items-center">
         <div className="row">
           <PageTitle avg={this.getAverageGrade()} text="Student Grade Table" />
-          <div className="col-8">
+          <div className=" col-sm-9 col-md-9">
             <GradeTable grades={this.state.grades} onSubmit={this.deleteStudent}/>
           </div>
-          <div className="col-4">
+          <div className="col-sm-8 col-md-3">
             <GradeForm onSubmit={this.addStudent} />
           </div>
         </div>

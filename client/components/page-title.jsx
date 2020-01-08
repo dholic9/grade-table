@@ -4,10 +4,10 @@ function PageTitle(props) {
   return (
     <div className="container-fluid">
       <div className="row justify-content-between">
-        <h1 className="title col-sm">{props.text}</h1>
-        <h1 className="avg col-sm">Average Grade:
+        <h1 className="title col ml-3 text-sm-left">{props.text}</h1>
+        <h2 className="avg  col  mr-1 text-md-right">Average Grade:
           <span className="badge badge-secondary">{props.avg}</span>
-        </h1>
+        </h2>
       </div>
     </div>
   );
