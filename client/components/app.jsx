@@ -7,10 +7,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: []
+      grades: [],
+      isUpdating: false,
+      updateStudent: null
     };
     this.addStudent = this.addStudent.bind(this);
     this.deleteStudent = this.deleteStudent.bind(this);
+    this.grabUpdateStudentId = this.grabUpdateStudentId.bind(this);
+    this.updateStudent = this.updateStudent.bind(this);
   }
 
   componentDidMount() {
@@ -70,16 +74,60 @@ class App extends React.Component {
       });
   }
 
+  updateStudent(id, newUpdatingStudent) {
+    const tempUpdatingArr = [...this.state.grades];
+    for (let i = 0; i < tempUpdatingArr.length; i++) {
+      if (tempUpdatingArr[i].id === id) {
+        tempUpdatingArr.splice(i, 1, newUpdatingStudent);
+      }
+    }
+    fetch('/api/grades/' + id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUpdatingStudent)
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          grades: tempUpdatingArr,
+          isUpdating: false
+        });
+      });
+  }
+
+  grabUpdateStudentId(id, updateStudent) {
+    const targetUpdateStudent = updateStudent;
+    const updatingStudentId = id;
+    this.setState({
+      updateStudent: targetUpdateStudent,
+      isUpdating: true
+    });
+  }
+
   render() {
     return (
-      <div className="container-fluid  justify-content-center align-items-center">
+      <div className="container-fluid justify-content-center align-items-center">
         <div className="row">
-          <PageTitle avg={this.getAverageGrade()} text="Student Grade Table" />
+          <PageTitle
+            avg={this.getAverageGrade()}
+            text="Student Grade Table"
+          />
           <div className=" col-sm-9 col-md-9">
-            <GradeTable grades={this.state.grades} onSubmit={this.deleteStudent}/>
+            <GradeTable
+              grades={this.state.grades}
+              onSubmit={this.deleteStudent}
+              onUpdate={this.grabUpdateStudentId}
+            />
           </div>
           <div className="col-sm-8 col-md-3">
-            <GradeForm onSubmit={this.addStudent} />
+            <GradeForm
+              onSubmit={this.addStudent}
+              onUpdateSubmitClick={this.updateStudent}
+              isUpdating={this.state.isUpdating}
+              updateStudent={this.state.updateStudent}
+            />
           </div>
         </div>
       </div>
