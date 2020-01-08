@@ -4,10 +4,12 @@ import Grade from './Grade';
 class GradeTable extends React.Component {
 
   createStudent() {
+
     if (this.props.grades.length > 0) {
       return this.props.grades.map(student => {
         return (
           <Grade
+            onUpdate={this.props.onUpdate}
             onSubmit={this.props.onSubmit}
             key={student.id}
             id={student.id}
@@ -27,6 +29,7 @@ class GradeTable extends React.Component {
   }
 
   render() {
+
     return (
       <div className="container col-sm-12 float-none">
         <table className="table table-striped table-bordered table-hover ">

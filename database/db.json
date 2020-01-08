@@ -20,8 +20,8 @@
     },
     {
       "name": "david",
-      "grade": "95",
       "course": "javascript",
+      "grade": "101",
       "id": 4
     },
     {
@@ -29,6 +29,24 @@
       "grade": "80",
       "course": "C++",
       "id": 5
+    },
+    {
+      "name": "me",
+      "course": "no",
+      "grade": "99",
+      "id": 6
+    },
+    {
+      "name": "sdf",
+      "course": "someoneelse",
+      "grade": "32",
+      "id": 7
+    },
+    {
+      "name": "someone new",
+      "grade": "929",
+      "course": "why not",
+      "id": 8
     }
   ]
 }
