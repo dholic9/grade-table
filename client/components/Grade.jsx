@@ -19,7 +19,17 @@ class Grade extends React.Component {
         <td>{this.props.name}</td>
         <td>{this.props.course}</td>
         <td>{this.props.grade}</td>
-        <td><button onClick={this.handleDeleteSubmit} type="submit" className="btn btn-danger">Delete</button></td>
+        <td>
+          <button
+            onClick={this.handleDeleteSubmit}
+            type="submit"
+            className="btn btn-danger"
+          >Delete</button>
+          <button
+            type="submit"
+            className="btn btn-outline-secondary"
+          >Update</button>
+        </td>
       </tr>
     );
   }

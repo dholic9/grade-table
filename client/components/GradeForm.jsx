@@ -54,17 +54,46 @@ class GradeForm extends React.Component {
     return (
       <form className="input-group mb-4 flex-column float-sm-left float-md-right" onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <input required autoFocus value={nameValue} onChange={this.handleNameChange} type="text" className="form-control" placeholder="Name"/>
+          <input
+            required
+            autoFocus
+            value={nameValue}
+            onChange={this.handleNameChange}
+            type="text" className="form-control"
+            placeholder="Name"
+          />
         </div>
         <div className="form-group">
-          <input required autoFocus value={courseValue} onChange={this.handleCourseChange} type="text" className="form-control" placeholder="Course" />
+          <input
+            required
+            autoFocus
+            value={courseValue}
+            onChange={this.handleCourseChange}
+            type="text"
+            className="form-control"
+            placeholder="Course"
+          />
         </div>
         <div className="form-group">
-          <input required autoFocus value={gradeValue} onChange={this.handleGradeChange} type="text" className="form-control" placeholder="Grade" />
+          <input
+            required
+            autoFocus
+            value={gradeValue}
+            onChange={this.handleGradeChange}
+            type="text"
+            className="form-control"
+            placeholder="Grade"
+          />
         </div>
         <div className="input-group-append">
-          <button type="submit" className="btn btn-primary rounded m-1">Submit</button>
-          <button type="submit" className="btn btn-outline-secondary m-1 rounded">Cancel</button>
+          <button
+            type="submit"
+            className="btn btn-primary rounded m-1"
+          >Submit</button>
+          <button
+            type="submit"
+            className="btn btn-outline-secondary m-1 rounded"
+          >Cancel</button>
         </div>
       </form>
     );
